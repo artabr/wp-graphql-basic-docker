@@ -32,19 +32,3 @@ services:
             WORDPRESS_DB_USER: wordpress
             WORDPRESS_DB_PASSWORD: wordpress
             WORDPRESS_DB_NAME: wordpress
-
-    wp-cli:
-        image: wordpress:cli
-        depends_on:
-            - db
-            - wordpress
-        volumes:
-            - ./wait-for-mysql.sh:/wait-for-mysql.sh
-            - ./wordpress:/var/www/html
-        command: /wait-for-mysql.sh
-        user: xfs
-        environment:
-            WORDPRESS_DB_HOST: db
-            WORDPRESS_DB_USER: wordpress
-            WORDPRESS_DB_PASSWORD: wordpress
-            WORDPRESS_DB_NAME: wordpress
